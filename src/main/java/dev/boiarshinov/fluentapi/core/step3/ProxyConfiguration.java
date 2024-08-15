@@ -2,29 +2,29 @@ package dev.boiarshinov.fluentapi.core.step3;
 
 public class ProxyConfiguration {
 
-    static RecipientsConfigurator configure() {
+    static RecipientsStep configure() {
         return new ProxyFluentConfigurator();
     }
 
-    interface RecipientsConfigurator {
-        LoadBalancingConfigurator recipients(String... recipients);
+    interface RecipientsStep {
+        LoadBalancerStep recipients(String... recipients);
     }
 
-    interface LoadBalancingConfigurator {
-        OptionalConfigurator lbByRoundRobin();
-        OptionalConfigurator lbByRandom();
-        OptionalConfigurator lbByHash();
-        OptionalConfigurator lbByLeastConnections();
+    interface LoadBalancerStep {
+        OptionalSteps lbByRoundRobin();
+        OptionalSteps lbByRandom();
+        OptionalSteps lbByHash();
+        OptionalSteps lbByLeastConnections();
     }
 
-    interface OptionalConfigurator {
-        OptionalConfigurator acl(String... ips);
-        OptionalConfigurator declineOnContent(String substring);
-        OptionalConfigurator replaceResponse(String toReplace, String replacement);
+    interface OptionalSteps {
+        OptionalSteps acl(String... ips);
+        OptionalSteps declineOnContent(String substring);
+        OptionalSteps replaceResponse(String toReplace, String replacement);
         ProxyConfiguration build();
     }
 
-    static class ProxyFluentConfigurator implements RecipientsConfigurator, LoadBalancingConfigurator, OptionalConfigurator {
+    static class ProxyFluentConfigurator implements RecipientsStep, LoadBalancerStep, OptionalSteps {
 
         @Override
         public ProxyFluentConfigurator recipients(String... recipients) {
@@ -38,32 +38,32 @@ public class ProxyConfiguration {
         }
 
         @Override
-        public OptionalConfigurator lbByRoundRobin() {
+        public OptionalSteps lbByRoundRobin() {
             return this;
         }
 
         @Override
-        public OptionalConfigurator lbByLeastConnections() {
+        public OptionalSteps lbByLeastConnections() {
             return this;
         }
 
         @Override
-        public OptionalConfigurator lbByRandom() {
+        public OptionalSteps lbByRandom() {
             return this;
         }
 
         @Override
-        public OptionalConfigurator lbByHash() {
+        public OptionalSteps lbByHash() {
             return this;
         }
 
         @Override
-        public OptionalConfigurator declineOnContent(String substring) {
+        public OptionalSteps declineOnContent(String substring) {
             return this;
         }
 
         @Override
-        public OptionalConfigurator replaceResponse(String toReplace, String replacement) {
+        public OptionalSteps replaceResponse(String toReplace, String replacement) {
             return this;
         }
 

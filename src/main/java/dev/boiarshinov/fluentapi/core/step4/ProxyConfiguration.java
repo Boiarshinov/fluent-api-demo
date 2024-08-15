@@ -2,37 +2,30 @@ package dev.boiarshinov.fluentapi.core.step4;
 
 public class ProxyConfiguration {
 
-    static RecipientsConfigurator configure() {
+    static RecipientsStep configure() {
         return new ProxyFluentConfigurator();
     }
 
-    interface LoadBalancingConfigurator {
-        LoadBalancingImplConfigurator loadBalancer();
+    interface LoadBalancerStep {
+        LoadBalancingFluentConfigurator loadBalancer();
     }
 
-    interface RecipientsConfigurator {
-        LoadBalancingConfigurator recipients(String... recipients);
+    interface RecipientsStep {
+        LoadBalancerStep recipients(String... recipients);
     }
 
-    interface LoadBalancingImplConfigurator {
-        OptionalConfigurator roundRobin();
-        OptionalConfigurator random();
-        OptionalConfigurator hash();
-        OptionalConfigurator leastConnections();
-    }
-
-    interface OptionalConfigurator {
-        OptionalConfigurator acl(String... ips);
-        OptionalConfigurator declineOnContent(String substring);
-        OptionalConfigurator replaceResponse(String toReplace, String replacement);
+    interface OptionalSteps {
+        OptionalSteps acl(String... ips);
+        OptionalSteps declineOnContent(String substring);
+        OptionalSteps replaceResponse(String toReplace, String replacement);
         ProxyConfiguration build();
     }
 
-    static class ProxyFluentConfigurator implements RecipientsConfigurator, LoadBalancingConfigurator, OptionalConfigurator {
+    static class ProxyFluentConfigurator implements RecipientsStep, LoadBalancerStep, OptionalSteps {
 
         @Override
         public ProxyFluentConfigurator recipients(String... recipients) {
-            //как обрабатывать входные аргументы здесь и далее не важно, для темы Fluent API
+            //как обрабатывать входные аргументы здесь и далее не важно для темы Fluent API
             return this;
         }
 
@@ -41,17 +34,17 @@ public class ProxyConfiguration {
         }
 
         @Override
-        public LoadBalancingImplConfigurator loadBalancer() {
+        public LoadBalancingFluentConfigurator loadBalancer() {
             return new LoadBalancingFluentConfigurator(this);
         }
 
         @Override
-        public OptionalConfigurator declineOnContent(String substring) {
+        public OptionalSteps declineOnContent(String substring) {
             return this;
         }
 
         @Override
-        public OptionalConfigurator replaceResponse(String toReplace, String replacement) {
+        public OptionalSteps replaceResponse(String toReplace, String replacement) {
             return this;
         }
 
@@ -61,7 +54,7 @@ public class ProxyConfiguration {
         }
     }
 
-    static class LoadBalancingFluentConfigurator implements LoadBalancingImplConfigurator {
+    static class LoadBalancingFluentConfigurator {
 
         private final ProxyFluentConfigurator proxyFluentConfigurator;
 
@@ -69,23 +62,19 @@ public class ProxyConfiguration {
             this.proxyFluentConfigurator = proxyFluentConfigurator;
         }
 
-        @Override
-        public OptionalConfigurator roundRobin() {
+        public OptionalSteps roundRobin() {
             return proxyFluentConfigurator;
         }
 
-        @Override
-        public OptionalConfigurator random() {
+        public OptionalSteps random() {
             return proxyFluentConfigurator;
         }
 
-        @Override
-        public OptionalConfigurator hash() {
+        public OptionalSteps hash() {
             return proxyFluentConfigurator;
         }
 
-        @Override
-        public OptionalConfigurator leastConnections() {
+        public OptionalSteps leastConnections() {
             return proxyFluentConfigurator;
         }
     }

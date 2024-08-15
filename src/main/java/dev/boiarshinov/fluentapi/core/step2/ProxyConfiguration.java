@@ -9,7 +9,7 @@ class ProxyConfiguration {
     static class ProxyFluentConfigurator {
 
         ProxyFluentConfigurator recipients(String... recipients) {
-            //как обрабатывать входные аргументы здесь и далее не важно, для темы Fluent API
+            //как обрабатывать входные аргументы здесь и далее не важно для темы Fluent API
             return this;
         }
 
