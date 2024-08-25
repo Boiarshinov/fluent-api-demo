@@ -12,7 +12,6 @@ public class App {
             )
             .declineOnContent("Тинькофф")
             .replaceResponse("Тинькофф банк", "Т-Банк")
-            .replaceResponse("Олег", "Александр Поломодов")
             .build();
     }
 }

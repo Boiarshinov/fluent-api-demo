@@ -9,7 +9,6 @@ public class App {
             .lbByRoundRobin()
             .declineOnContent("Тинькофф")
             .replaceResponse("Тинькофф банк", "Т-Банк")
-            .replaceResponse("Олег", "Александр Поломодов")
             .build();
     }
 }

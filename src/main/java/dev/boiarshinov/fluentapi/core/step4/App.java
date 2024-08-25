@@ -10,7 +10,6 @@ public class App {
                 .roundRobin()
             .declineOnContent("Тинькофф")
             .replaceResponse("Тинькофф банк", "Т-Банк")
-            .replaceResponse("Олег", "Александр Поломодов")
             .build();
     }
 }
