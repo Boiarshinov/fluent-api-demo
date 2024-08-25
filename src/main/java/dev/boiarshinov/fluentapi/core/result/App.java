@@ -4,13 +4,15 @@ public class App {
 
     //@Bean
     public ProxyConfiguration proxyConfig() {
-
-        return ProxyConfiguration
-            .configure()
+        return ProxyConfiguration.configure()
             .recipients("host1:port", "host2:port")
-            .balancer().roundRobin()
-
+            .loadBalancer(lb -> lb
+                .hash()
+                .healthcheckEnabled(true)
+                .murmur3()
+            )
+            .declineOnContent("Тинькофф")
+            .replaceResponse("Тинькофф банк", "Т-Банк")
             .build();
-
     }
 }
