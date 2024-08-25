@@ -17,7 +17,6 @@ public class ProxyConfiguration {
     }
 
     interface OptionalSteps {
-        OptionalSteps acl(String... ips);
         OptionalSteps declineOnContent(String substring);
         OptionalSteps replaceResponse(String toReplace, String replacement);
         ProxyConfiguration build();
@@ -28,10 +27,6 @@ public class ProxyConfiguration {
         @Override
         public ProxyFluentConfigurator recipients(String... recipients) {
             //как обрабатывать входные аргументы здесь и далее не важно для темы Fluent API
-            return this;
-        }
-
-        public ProxyFluentConfigurator acl(String... ips) {
             return this;
         }
 

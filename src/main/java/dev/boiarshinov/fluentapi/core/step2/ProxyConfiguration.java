@@ -13,10 +13,6 @@ class ProxyConfiguration {
             return this;
         }
 
-        ProxyFluentConfigurator acl(String... ips) {
-            return this;
-        }
-
         ProxyFluentConfigurator lbByRoundRobin() {
             return this;
         }

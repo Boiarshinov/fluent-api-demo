@@ -9,7 +9,6 @@ public class App {
             .loadBalancer(lb ->
                 lb.roundRobin()
             )
-            .acl("192.168.0.1", "192.168.0.2")
             .declineOnContent("Тинькофф")
             .replaceResponse("Тинькофф банк", "Т-Банк")
             .replaceResponse("Олег", "Александр Поломодов")
