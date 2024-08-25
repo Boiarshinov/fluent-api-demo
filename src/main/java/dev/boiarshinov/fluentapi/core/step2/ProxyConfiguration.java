@@ -8,28 +8,28 @@ class ProxyConfiguration {
 
     static class ProxyFluentConfigurator {
 
-        ProxyFluentConfigurator recipients(String... recipients) {
+        public ProxyFluentConfigurator recipients(String... recipients) {
             //как обрабатывать входные аргументы здесь и далее не важно для темы Fluent API
             return this;
         }
 
-        ProxyFluentConfigurator lbByRoundRobin() {
+        public ProxyFluentConfigurator lbByRoundRobin() {
             return this;
         }
 
-        ProxyFluentConfigurator lbByLeastConnections() {
+        public ProxyFluentConfigurator lbByLeastConnections() {
             return this;
         }
 
-        ProxyFluentConfigurator declineOnContent(String substring) {
+        public ProxyFluentConfigurator declineOnContent(String substring) {
             return this;
         }
 
-        ProxyFluentConfigurator replaceResponse(String toReplace, String replacement) {
+        public ProxyFluentConfigurator replaceResponse(String toReplace, String replacement) {
             return this;
         }
 
-        ProxyConfiguration build() {
+        public ProxyConfiguration build() {
             return new ProxyConfiguration();
         }
     }
