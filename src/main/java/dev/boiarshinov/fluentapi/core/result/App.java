@@ -11,8 +11,8 @@ public class App {
                 .healthcheckEnabled(true)
                 .murmur3()
             )
-            .declineOnContent("Тинькофф")
-            .replaceResponse("Тинькофф банк", "Т-Банк")
+            .declineOnContent("Желтофф")
+            .replaceResponse("Желтофф банк", "Ж-Банк")
             .build();
     }
 }
