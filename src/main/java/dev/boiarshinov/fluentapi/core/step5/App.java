@@ -9,8 +9,8 @@ public class App {
             .loadBalancer(lb ->
                 lb.roundRobin()
             )
-            .declineOnContent("Желтофф")
-            .replaceResponse("Желтофф банк", "Ж-Банк")
+            .declineOnContent("СПб")
+            .replaceResponse("СПб", "СБП")
             .build();
     }
 }

@@ -7,8 +7,8 @@ public class App {
         return ProxyConfiguration.configure()
             .recipients("host1:port", "host2:port")
             .lbByRoundRobin()
-            .declineOnContent("Желтофф")
-            .replaceResponse("Желтофф банк", "Ж-Банк")
+            .declineOnContent("СПб")
+            .replaceResponse("СПб", "СБП")
             .build();
     }
 }

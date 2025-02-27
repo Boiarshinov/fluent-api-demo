@@ -8,8 +8,8 @@ public class App {
             .recipients("host1:port", "host2:port")
             .loadBalancer()
                 .roundRobin()
-            .declineOnContent("Желтофф")
-            .replaceResponse("Желтофф банк", "Ж-Банк")
+            .declineOnContent("СПб")
+            .replaceResponse("СПб", "СБП")
             .build();
     }
 }
